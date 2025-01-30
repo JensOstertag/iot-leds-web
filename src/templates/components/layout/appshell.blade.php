@@ -8,7 +8,11 @@
 
         {{-- Browser tab --}}
         <title>@if(!empty($title)){{ $title }} - @endif{{ Config::$APP_SETTINGS["APP_NAME"] }}</title>
-        <link rel="icon" href="{{ Config::$APP_SETTINGS["APP_FAVICON"] }}" type="image/x-icon">
+        <link rel="icon" type="image/png" href="{{ Router::staticFilePath("img/favicon/favicon-96x96.png") }}" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="{{ Router::staticFilePath("img/favicon/favicon.svg") }}" />
+        <link rel="shortcut icon" href="{{ Router::staticFilePath("img/favicon/favicon.ico") }}" />
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ Router::staticFilePath("img/favicon/apple-touch-icon.png") }}" />
+        <link rel="manifest" href="{{ Router::staticFilePath("img/favicon/site.webmanifest") }}" />
 
         {{-- Basic SEO --}}
         <meta name="description" content="{{ SEO::getDescription() }}">

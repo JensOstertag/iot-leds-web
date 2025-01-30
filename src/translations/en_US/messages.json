@@ -58,5 +58,39 @@
     "Your email address has been verified. You can now log in to your account.": "Your email address has been verified. You can now log in to your account.",
     "Version:": "Version:",
 
-    "No users were registered yet. An administrator account has been created.": "No users were registered yet. An administrator account has been created."
+    "No users were registered yet. An administrator account has been created.": "No users were registered yet. An administrator account has been created.",
+
+    "Dashboard": "Dashboard",
+    "Account settings": "Account settings",
+    "Manage your personal information, security settings, and account preferences.": "Manage your personal information, security settings, and account preferences.",
+    "Update your account password.": "Update your account password.",
+    "Please enter your current password and confirm your new one.": "Please enter your current password and confirm your new one.",
+    "Current password": "Current password",
+    "New password": "New password",
+    "New password (repeat)": "New password (repeat)",
+    "The password does not meet the requirements.": "The password does not meet the requirements.",
+    "The passwords do not match.": "The passwords do not match.",
+    "The current password is incorrect.": "The current password is incorrect.",
+    "Your password has been updated.": "Your password has been updated.",
+
+    "Animation management": "Animation management",
+
+    "Animations": "Animations",
+    "Create or edit your custom animations.": "Create or edit your custom animations.",
+    "Create animation": "Create animation",
+    "Edit animation $$name$$": "Edit animation „$$name$$”",
+    "Delete animation": "Delete animation",
+    "Do you really want to delete this animation?": "Do you really want to delete this animation?",
+    "Animation name": "Animation name",
+    "Animation type": "Animation type",
+    "Duration per color": "Duration per color",
+    "Colors": "Colors",
+    "The animation that should be edited does not exist.": "The animation that should be edited does not exist.",
+    "The animation that should be deleted does not exist.": "The animation that should be deleted does not exist.",
+    "The animation has been saved.": "The animation has been saved.",
+    "The animation has been deleted.": "The animation has been deleted.",
+
+
+    "Devices": "Devices",
+    "Register new devices which should be animated.": "Register new devices which should be animated.",
 }
