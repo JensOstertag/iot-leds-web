@@ -68,8 +68,5 @@
                 "description" => t("Configure the system to your needs.")
             ])
         </div>
-
-        {{-- TODO: User management --}}
-        {{-- TODO: System settings --}}
     @endauth
 @endcomponent

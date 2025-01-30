@@ -63,3 +63,9 @@ Router::addRoute("GET", "/auth/password-recovery/reset", "/auth/recovery-reset.p
 Router::addRoute("POST", "/auth/password-recovery/reset", "/auth/recovery-reset-action.php", "auth-recovery-reset-action");
 Router::addRoute("GET", "/auth/password-recovery/reset/complete", "/auth/recovery-reset-complete.php", "auth-recovery-reset-complete");
 Router::addRoute("GET", "/auth/logout", "auth/logout.php", "auth-logout");
+
+// API
+Router::addRoute("POST", "/api/get-device-animation", "api/get-device-animation.php", "api-get-device-animation");
+// TODO: API endpoint to get all animations for a user
+// TODO: API endpoints to add, edit and delete animations
+// TODO: API endpoint to set the current animation and power state of a device
