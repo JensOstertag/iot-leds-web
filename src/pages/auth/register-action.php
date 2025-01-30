@@ -11,6 +11,12 @@ function keepPostField(string $postField): void {
     }
 }
 
+// Check if registration is enabled
+if(SystemSetting::dao()->get("registrationEnabled") !== "true") {
+    new InfoMessage(t("Registration is currently disabled. Please contact an administrator for further information."), InfoMessageType::ERROR);
+    Comm::redirect(Router::generate("auth-login"));
+}
+
 // Check whether form fields are given
 if(empty(empty($_POST["username"]) || $_POST["email"]) || empty($_POST["password"]) || empty($_POST["password-repeat"])) {
     keepPostField("username");
@@ -70,7 +76,7 @@ if(!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d\W]).{8,}$/", $_POST["password"]
 
 // Register user
 $oneTimePassword = User::dao()->generateOneTimePassword();
-$user = User::dao()->register($username, $_POST["password"], $email, PermissionLevel::DEFAULT->value, $oneTimePassword);
+$user = User::dao()->customRegister($username, $_POST["password"], $email, PermissionLevel::DEFAULT->value, $oneTimePassword);
 
 // Send verification email
 $otpIdEncoded = urlencode(base64_encode($user->getId()));

@@ -54,19 +54,18 @@ if(!password_verify($otp, $user->getOneTimePassword())) {
     Comm::redirect(Router::generate("auth-login"));
 }
 
+// Set the user to be an admin if there are no other users
+if(count(User::dao()->getObjects(["emailVerified" => true])) === 0) {
+    $user->setPermissionLevel(PermissionLevel::ADMIN->value);
+    new InfoMessage(t("No users were registered yet. An administrator account has been created."), InfoMessageType::INFO);
+    Logger::getLogger("Email-Verification")->info("An initial administrator account has been created.");
+}
+
 // Update the user object in the database
 $user->setEmailVerified(true);
 $user->setOneTimePassword(null);
 $user->setOneTimePasswordExpiration(null);
 $user->setUpdated(new DateTimeImmutable());
-
-// Set the user to be an admin if there are no other users
-if(count(User::dao()->getObjects()) === 0) {
-    $user->setPermissionLevel(PermissionLevel::ADMIN->value);
-    new InfoMessage(t("No users were registered yet. An administrator account has been created."), InfoMessageType::INFO);
-    Logger::getLogger("Login")->info("An initial administrator account has been created.");
-}
-
 User::dao()->save($user);
 
 Logger::getLogger("Email-Verification")->info("The email address \"{$user->getEmail()}\" (User ID \"{$user->getId()}\") has been verified");

@@ -14,7 +14,7 @@ $validation = \validation\Validator::create([
         "name" => \validation\Validator::create([
             \validation\IsRequired::create(true),
             \validation\IsString::create(),
-            \validation\MaxLength::create(256),
+            \validation\MaxLength::create(256)
         ]),
         "type" => \validation\Validator::create([
             \validation\IsRequired::create(),

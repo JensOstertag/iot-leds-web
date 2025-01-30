@@ -14,13 +14,13 @@ $validation = \validation\Validator::create([
             \validation\IsRequired::create(),
             \validation\IsString::create(),
             \validation\MinLength::create(5),
-            \validation\MaxLength::create(256),
+            \validation\MaxLength::create(256)
         ]),
         "password" => \validation\Validator::create([
             \validation\IsRequired::create(),
             \validation\IsString::create(),
             \validation\MinLength::create(8),
-            \validation\MaxLength::create(256),
+            \validation\MaxLength::create(256)
         ])
     ])
 ])->setErrorMessage(t("Please log in with your account's credentials."));

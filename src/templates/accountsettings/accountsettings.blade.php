@@ -13,5 +13,12 @@
             "title" => t("Change password"),
             "description" => t("Update your account password.")
         ])
+
+        @include("dashboard.components.link", [
+            "icon" => "components.icons.apikey",
+            "href" => Router::generate("account-settings-api-key"),
+            "title" => t("Personal API key"),
+            "description" => t("Manage your personal API key.")
+        ])
     </div>
 @endcomponent

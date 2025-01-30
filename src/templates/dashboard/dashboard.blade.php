@@ -16,45 +16,60 @@
     </div>
 
     <h2 class="mt-4 bg-2">
+        {{ t("Control panel") }}
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        @include("dashboard.components.link", [
+            "icon" => "components.icons.remote",
+            "href" => Router::generate("control-overview"),
+            "title" => t("Control panel"),
+            "description" => t("Switch the animations for your devices.")
+        ])
+    </div>
+
+    <h2 class="mt-4 bg-2">
         {{ t("Animation management") }}
     </h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         @include("dashboard.components.link", [
-            "icon" => "components.icons.accountsettings",
+            "icon" => "components.icons.animation",
             "href" => Router::generate("animation-overview"),
             "title" => t("Animations"),
             "description" => t("Create or edit your own custom animations.")
         ])
 
         @include("dashboard.components.link", [
-            "icon" => "components.icons.accountsettings",
+            "icon" => "components.icons.device",
             "href" => Router::generate("device-overview"),
             "title" => t("Devices"),
             "description" => t("Register new devices which should be animated.")
         ])
     </div>
 
-    <h2 class="mt-4 bg-2">
-        {{ t("API access") }}
-    </h2>
+    @auth(PermissionLevel::ADMIN->value)
+        <h2 class="mt-4 mb-2">
+            {{ t("System administration") }}
+        </h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        @include("dashboard.components.link", [
-            "icon" => "components.icons.accountsettings",
-            "href" => Router::generate("api-overview"),
-            "title" => t("API keys"),
-            "description" => t("Manage your API keys.")
-        ])
-    </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            @include("dashboard.components.link", [
+                "icon" => "components.icons.user",
+                "href" => Router::generate("user-overview"),
+                "title" => t("User management"),
+                "description" => t("Manage user accounts.")
+            ])
 
-{{--    @auth(0)--}}
-{{--        @include("dashboards.user")--}}
-{{--    @endauth--}}
-{{--    @auth(1)--}}
-{{--        @include("dashboards.facilitator")--}}
-{{--    @endauth--}}
-{{--    @auth(2)--}}
-{{--        @include("dashboards.admin")--}}
-{{--    @endauth--}}
+            @include("dashboard.components.link", [
+                "icon" => "components.icons.gear",
+                "href" => Router::generate("system-settings"),
+                "title" => t("System settings"),
+                "description" => t("Configure the system to your needs.")
+            ])
+        </div>
+
+        {{-- TODO: User management --}}
+        {{-- TODO: System settings --}}
+    @endauth
 @endcomponent

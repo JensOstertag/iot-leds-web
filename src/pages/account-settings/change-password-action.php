@@ -10,19 +10,19 @@ $validation = \validation\Validator::create([
             \validation\IsRequired::create(),
             \validation\IsString::create(),
             \validation\MinLength::create(8),
-            \validation\MaxLength::create(256),
+            \validation\MaxLength::create(256)
         ]),
         "new-password" => \validation\Validator::create([
             \validation\IsRequired::create(),
             \validation\IsString::create(),
             \validation\MinLength::create(8),
-            \validation\MaxLength::create(256),
+            \validation\MaxLength::create(256)
         ]),
         "new-password-repeat" => \validation\Validator::create([
             \validation\IsRequired::create(),
             \validation\IsString::create(),
             \validation\MinLength::create(8),
-            \validation\MaxLength::create(256),
+            \validation\MaxLength::create(256)
         ])
     ])
 ])->setErrorMessage(t("Please fill out all the required fields."));

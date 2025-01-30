@@ -27,13 +27,13 @@ module.exports = {
                 "font": "#ffffff"
             },
             "primary": {
-                DEFAULT: "#2f7cff",
-                "effect": "#275fda",
+                DEFAULT: "#669bbc",
+                "effect": "#447a9c",
                 "font": "#ffffff"
             },
             "secondary": {
-                DEFAULT: "#ff2f7c",
-                "effect": "#da275f",
+                DEFAULT: "#e99f0c",
+                "effect": "#ae7709",
                 "font": "#ffffff"
             },
             "danger": {

@@ -22,6 +22,14 @@ try {
 }
 
 $animation = $get["animation"];
+$deviceAnimations = DeviceAnimation::dao()->getObjects([
+    "animationId" => $animation->getId()
+]);
+foreach($deviceAnimations as $deviceAnimation) {
+    $deviceAnimation->setAnimationId(null);
+    $deviceAnimation->setPower(false);
+    DeviceAnimation::dao()->save($deviceAnimation);
+}
 Animation::dao()->delete($animation);
 
 Logger::getLogger("Animations")->info("User {$user->getId()} ({$user->getUsername()}, PL {$user->getPermissionLevel()}) deleted the animation {$animation->getId()} ({$animation->getName()})");
