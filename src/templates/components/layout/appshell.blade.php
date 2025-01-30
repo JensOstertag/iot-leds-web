@@ -43,9 +43,12 @@
         <meta name="revisit-after" content="{{ SEO::getRevisitAfter() }}">
 
         {{-- CSS --}}
+        <link rel="stylesheet" href="{{ Router::staticFilePath("css/lib/datatables.min.css") }}">
         <link rel="stylesheet" href="{{ Router::staticFilePath("css/style.css") }}">
 
         {{-- JavaScript --}}
+        <script src="{{ Router::staticFilePath("js/lib/jquery.min.js") }}"></script>
+        <script src="{{ Router::staticFilePath("js/lib/datatables.min.js") }}"></script>
         @if($_SERVER["HTTP_HOST"] === "localhost:3000" || $_SERVER["HTTP_HOST"] === "127.0.0.1:3000")
             <script src="{{ Router::staticFilePath("js/lib/LiveUpdate.js") }}"></script>
         @endif
@@ -115,6 +118,10 @@
         </header>
 
         <main class="px-content-padding-sm mt-4 md:px-content-padding-md lg:px-content-padding-lg min-h-[90vh]">
+            @include("components.layout.breadcrumbs", [
+                "breadcrumbs" => $breadcrumbs ?? []
+            ])
+
             @include("components.layout.infomessagelist")
 
             {!! $slot !!}
@@ -157,8 +164,10 @@
         </footer>
 
         <script type="module">
-            import { init } from "{{ Router::staticFilePath("js/DateFormatter.js") }}";
-            init();
+            import * as ButtonLoad from "{{ Router::staticFilePath("js/ButtonLoad.js") }}";
+            import * as DateFormatter from "{{ Router::staticFilePath("js/DateFormatter.js") }}";
+            ButtonLoad.init();
+            DateFormatter.init();
         </script>
     </body>
 </html>

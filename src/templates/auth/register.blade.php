@@ -96,7 +96,8 @@
             </p>
         </div>
 
-        <button class="{{ TailwindUtil::button(true) }} w-full">
+        <button class="{{ TailwindUtil::button(true) }} w-full" type="submit">
+            @include("components.icons.buttonload")
             {{ t("Register") }}
         </button>
     </form>

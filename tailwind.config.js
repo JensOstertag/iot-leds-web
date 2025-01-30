@@ -121,6 +121,8 @@ module.exports = {
         {
             pattern: /^(bg|border|text|fill)-(primary|secondary|gray|background|danger|warning|safe)-(DEFAULT|effect|font)$/,
             variants: ["hover", "focus", "disabled", "disabled:hover"]
-        }
+        },
+        "dt-container", "dt-layout-row", "dt-search", "dt-paging", "dataTable",
+        "dt-paging-button", "current", "disabled", "previous", "next"
     ]
 }

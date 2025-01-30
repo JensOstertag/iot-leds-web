@@ -1,4 +1,6 @@
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /*
  *  Import font by a link:
@@ -33,5 +35,53 @@
     }
 }
 
-@tailwind components;
-@tailwind utilities;
+@layer components {
+    /*
+     * DataTables custom styling
+     */
+    .dt-container {
+        @apply flex flex-col gap-2;
+    }
+    .dt-container .dt-layout-row {
+        @apply flex flex-row items-center justify-between w-full gap-2;
+    }
+
+    /* Style search bar */
+    .dt-container .dt-search {
+        @apply inline-block;
+    }
+    .dt-container .dt-search input {
+        @apply m-0 px-2 py-1 bg-transparent border border-gray outline-primary rounded placeholder:text-font-light;
+    }
+
+    /* Move pagination to the center */
+    .dt-container .dt-paging {
+        @apply float-none text-center;
+    }
+
+    /* Style pagination buttons */
+    .dt-container .dt-paging .dt-paging-button {
+        @apply m-0 px-4 py-2 inline-flex justify-around border transition-all text-font bg-transparent border-gray cursor-pointer;
+    }
+    .dt-container .dt-paging .dt-paging-button.current {
+        @apply text-primary-font bg-primary border-primary;
+    }
+    .dt-container .dt-paging .dt-paging-button.disabled {
+        @apply text-gray bg-transparent border-gray cursor-default;
+    }
+    .dt-container .dt-paging .dt-paging-button:hover {
+        @apply bg-gray-light border-gray;
+    }
+    .dt-container .dt-paging .dt-paging-button.current:hover {
+        @apply text-primary-font bg-primary border-primary;
+    }
+    .dt-container .dt-paging .dt-paging-button.disabled:hover {
+        @apply bg-transparent border-gray shadow-none;
+    }
+    .dt-container .dt-paging .dt-paging-button.previous {
+        @apply rounded-l;
+    }
+    .dt-container .dt-paging .dt-paging-button.next {
+        @apply rounded-r;
+    }
+}

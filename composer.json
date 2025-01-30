@@ -1,6 +1,6 @@
 {
-    "name": "jensostertag/php-framework",
-    "description": "Powerful and feature-rich PHP framework designed to simplify web development",
+    "name": "jensostertag/iot-leds-web",
+    "description": "Webinterface to control IoT WS2812B-LEDs",
     "license": "MIT",
     "require": {
         "php": ">=8.2",

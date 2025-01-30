@@ -6,7 +6,20 @@ Router::addRoute("GET|POST", "/400", "400.php", "400");
 
 Router::addRoute("POST", "/translations-api", "translations/api.php", "translations-api");
 
-Router::addRoute("GET", "/design", "design.php", "design");
+Router::addRoute("GET", "/dashboard", "dashboard.php", "dashboard");
+
+// Account settings
+Router::addRoute("GET", "/account-settings", "account-settings/account-settings.php", "account-settings");
+Router::addRoute("GET", "/account-settings/change-password", "account-settings/change-password.php", "account-settings-change-password");
+Router::addRoute("POST", "/account-settings/change-password", "account-settings/change-password-action.php", "account-settings-change-password-action");
+
+// Animations
+Router::addRoute("GET", "/animations", "animations/overview.php", "animation-overview");
+Router::addRoute("POST", "/animations/table", "animations/overview-table.php", "animation-overview-table");
+Router::addRoute("GET", "/animations/edit", "animations/edit.php", "animation-create");
+Router::addRoute("GET", "/animations/edit/{i:animation}", "animations/edit.php", "animation-edit");
+Router::addRoute("POST", "/animations/save", "animations/save.php", "animation-save");
+Router::addRoute("GET", "/animations/delete/{i:animation}", "animations/delete.php", "animation-delete");
 
 // Authentication
 Router::addRoute("GET", "/auth/login", "auth/login.php", "auth-login");

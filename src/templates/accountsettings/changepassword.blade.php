@@ -1,40 +1,58 @@
-@component("components.layout.authshell")
+@component("components.layout.authshell", ["title" => t("Change password")])
     <p class="mb-2">
-        {{ t("Please enter your new password.") }}
+        {{ t("Please enter your current password and confirm your new one.") }}
     </p>
 
-    <form method="post" action="{{ Router::generate("auth-recovery-reset-action") }}">
-        <div class="{{ TailwindUtil::inputGroup() }} mb-2">
+    <form method="post" action="{{ Router::generate("account-settings-change-password-action") }}">
+        <div class="{{ TailwindUtil::inputGroup() }} mb-4">
             <label class="{{ TailwindUtil::$inputLabel }}"
-                   for="password"
+                   for="current-password"
                    data-required>
-                {{ t("Password") }}
+                {{ t("Current password") }}
             </label>
             <input class="{{ TailwindUtil::$input }}"
                    type="password"
-                   name="password"
-                   id="password"
-                   placeholder="{{ t("Password") }}"
-                   required
-                   pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[\d\W]).{8,}">
+                   name="current-password"
+                   id="current-password"
+                   placeholder="{{ t("Current password") }}"
+                   minlength="8"
+                   maxlength="256"
+                   required>
         </div>
 
         <div class="{{ TailwindUtil::inputGroup() }} mb-2">
             <label class="{{ TailwindUtil::$inputLabel }}"
-                   for="password-repeat"
+                   for="new-password"
                    data-required>
-                {{ t("Password (repeat)") }}
+                {{ t("New password") }}
             </label>
             <input class="{{ TailwindUtil::$input }}"
                    type="password"
-                   name="password-repeat"
-                   id="password-repeat"
-                   placeholder="{{ t("Password (repeat)") }}"
-                   required
-                   pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[\d\W]).{8,}">
+                   name="new-password"
+                   id="new-password"
+                   placeholder="{{ t("New password") }}"
+                   minlength="8"
+                   maxlength="256"
+                   required>
         </div>
 
-        <span class="block w-full mt-2 bg-gray-light border border-gray-light border-2 rounded-full">
+        <div class="{{ TailwindUtil::inputGroup() }} mb-2">
+            <label class="{{ TailwindUtil::$inputLabel }}"
+                   for="new-password-repeat"
+                   data-required>
+                {{ t("New password (repeat)") }}
+            </label>
+            <input class="{{ TailwindUtil::$input }}"
+                   type="password"
+                   name="new-password-repeat"
+                   id="new-password-repeat"
+                   placeholder="{{ t("New password (repeat)") }}"
+                   minlength="8"
+                   maxlength="256"
+                   required>
+        </div>
+
+        <span class="block w-full mt-2 bg-gray-light border border-2 border-gray-light rounded-full">
             <span class="block w-2 h-1 rounded-full data-[strength='0']:bg-danger data-[strength='1']:bg-warning data-[strength='2']:bg-safe transition-all"
                   id="password-strength-indicator-bar"
                   data-strength="0"></span>
@@ -61,7 +79,8 @@
             </p>
         </div>
 
-        <button class="{{ TailwindUtil::button(true) }} w-full" type="submit">
+        <button class="{{ TailwindUtil::button(true) }} w-full mb-2 gap-2"
+                type="submit">
             @include("components.icons.buttonload")
             {{ t("Change password") }}
         </button>
@@ -69,6 +88,6 @@
 
     <script type="module">
         import * as PasswordStrength from "{{ Router::staticFilePath("js/auth/PasswordStrength.js") }}";
-        PasswordStrength.init("password");
+        PasswordStrength.init("new-password");
     </script>
 @endcomponent

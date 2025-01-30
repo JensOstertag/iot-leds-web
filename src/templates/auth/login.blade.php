@@ -37,7 +37,8 @@
                    required>
         </div>
 
-        <button class="{{ TailwindUtil::button(true) }} w-full mb-2">
+        <button class="{{ TailwindUtil::button(true) }} w-full mb-2" type="submit">
+            @include("components.icons.buttonload")
             {{ t("Log in") }}
         </button>
 
