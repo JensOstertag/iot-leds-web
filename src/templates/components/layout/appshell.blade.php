@@ -131,7 +131,7 @@
             {!! $slot !!}
         </main>
 
-        <footer class="min-h-24 px-content-padding-sm md:px-content-padding-md lg:px-content-padding-lg bg-background-header text-font-footer">
+        <footer class="mb-4 px-content-padding-sm md:px-content-padding-md lg:px-content-padding-lg bg-background-header text-font-footer">
             <hr class="my-4">
             <div class="flex justify-start items-center uppercase">
                 <img src="{{ Router::staticFilePath("img/logo.svg") }}"
@@ -144,13 +144,27 @@
             </div>
 
             <div class="flex flex-wrap justify-between gap-2 mt-2 text-sm">
-                <div class="flex flex-wrap gap-1 text-xs">
-                    <span>
-                        &copy;&nbsp;2020&nbsp;-&nbsp;{{ (new DateTime())->format("Y") }}
-                    </span>
-                    <span>
-                        {{ Config::$APP_SETTINGS["APP_AUTHOR"] }}
-                    </span>
+                <div class="flex flex-col text-sm">
+                    <p>
+                        Using
+                        <span class="inline-flex">
+                            <a href="{{ Router::generate("libraries") }}"
+                               class="text-primary hover:text-primary-effect transition-all">
+                                these software dependencies
+                            </a>.
+                        </span>
+                    </p>
+                    <p>
+                        Licensed under the
+                        <span class="inline-flex">
+                            <a href="https://github.com/JensOstertag/iot-leds-web/blob/main/LICENSE"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="text-primary hover:text-primary-effect transition-all">
+                                MIT License
+                            </a>.
+                        </span>
+                    </p>
                 </div>
 
                 <span class="inline-flex items-center gap-1 inline-block float-right text-xs">
