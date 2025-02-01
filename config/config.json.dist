@@ -3,7 +3,6 @@
         "APP_NAME": "IoT-LEDs",
         "WEBSITE_TITLE": "IoT-LEDs",
         "APP_URL": "http://localhost:3000",
-        "APP_FAVICON": "/static/img/favicon.png",
         "APP_AUTHOR": "Jens Ostertag",
         "APP_VERSION": "1.0.0"
     },
@@ -29,12 +28,12 @@
         "MAIL_SMTP_PASS": "password",
         "MAIL_SMTP_SECURE": "tls",
         "MAIL_SMTP_AUTH": true,
-        "MAIL_DEFAULT_SENDER_EMAIL": "mail@framework",
-        "MAIL_DEFAULT_SENDER_NAME": "Framework",
-        "MAIL_DEFAULT_REPLY_TO": "mail@framework",
-        "MAIL_DEFAULT_SUBJECT": "Framework",
+        "MAIL_DEFAULT_SENDER_EMAIL": "mail@iot-leds",
+        "MAIL_DEFAULT_SENDER_NAME": "IoT-LEDs",
+        "MAIL_DEFAULT_REPLY_TO": "mail@iot-leds",
+        "MAIL_DEFAULT_SUBJECT": "IoT-LEDs",
         "MAIL_REDIRECT_ALL_MAILS": false,
-        "MAIL_REDIRECT_ALL_MAILS_TO": "mail@framework"
+        "MAIL_REDIRECT_ALL_MAILS_TO": "mail@iot-leds"
     },
     "SEO_SETTINGS": {
         "SEO_DEFAULT_DESCRIPTION": "Webinterface to control IoT WS2812B-LEDs",
