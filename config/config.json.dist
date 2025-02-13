@@ -4,7 +4,8 @@
         "WEBSITE_TITLE": "IoT-LEDs",
         "APP_URL": "http://localhost:3000",
         "APP_AUTHOR": "Jens Ostertag",
-        "APP_VERSION": "1.0.0"
+        "APP_VERSION": "1.0.0",
+        "PRODUCTION": true
     },
     "ROUTER_SETTINGS": {
         "ROUTER_BASE_URI": "/"

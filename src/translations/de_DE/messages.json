@@ -1,6 +1,7 @@
 {
     "The requested resource could not be found.": "Die angefragte Ressource konnte nicht gefunden werden.",
     "There was an error with your request.": "Es gab einen Fehler bei Ihrer Anfrage.",
+    "The server encountered an internal error and could not complete your request.": "Es ist ein interner Fehler aufgetreten. Ihre Anfrage konnte nicht abgeschlossen werden.",
     "Logged in as": "Angemeldet als",
     "Log in": "Anmelden",
     "Register": "Registrieren",

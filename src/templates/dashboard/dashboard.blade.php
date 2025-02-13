@@ -15,7 +15,7 @@
         ])
     </div>
 
-    <h2 class="mt-4 bg-2">
+    <h2 class="mt-4 mb-2">
         {{ t("Control panel") }}
     </h2>
 
@@ -28,7 +28,7 @@
         ])
     </div>
 
-    <h2 class="mt-4 bg-2">
+    <h2 class="mt-4 mb-2">
         {{ t("Animation management") }}
     </h2>
 
