@@ -19,6 +19,45 @@
             </label>
         </div>
 
+        <div class="{{ TailwindUtil::inputGroup() }} mb-2">
+            <label for="webSocketHost" class="{{ TailwindUtil::$inputLabel }}" data-required>
+                {{ t("WebSocket server host") }}
+            </label>
+            <input id="webSocketHost"
+                   name="webSocketHost"
+                   type="text"
+                   class="{{ TailwindUtil::$input }}"
+                   value="{{ $webSocketHost }}"
+                   placeholder="{{ t("WebSocket server host") }}"
+                   required>
+        </div>
+
+        <div class="{{ TailwindUtil::inputGroup() }} mb-2">
+            <label for="webSocketChannel" class="{{ TailwindUtil::$inputLabel }}" data-required>
+                {{ t("WebSocket server channel") }}
+            </label>
+            <input id="webSocketChannel"
+                   name="webSocketChannel"
+                   type="text"
+                   class="{{ TailwindUtil::$input }}"
+                   value="{{ $webSocketChannel }}"
+                   placeholder="{{ t("WebSocket server channel") }}"
+                   required>
+        </div>
+
+        <div class="{{ TailwindUtil::inputGroup() }} mb-2">
+            <label for="webSocketToken" class="{{ TailwindUtil::$inputLabel }}">
+                {{ t("WebSocket server token") }}
+            </label>
+            <input id="webSocketToken"
+                   name="webSocketToken"
+                   type="text"
+                   class="{{ TailwindUtil::$input }}"
+                   value="{{ $webSocketToken }}"
+                   placeholder="{{ t("WebSocket server token") }}"
+                   readonly>
+        </div>
+
         <button type="submit" class="{{ TailwindUtil::button() }} gap-2">
             @include("components.icons.buttonload")
             @include("components.icons.save")

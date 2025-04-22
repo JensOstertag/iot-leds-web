@@ -75,3 +75,6 @@ CREATE TABLE IF NOT EXISTS `SystemSetting` (
     UNIQUE KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 INSERT INTO SystemSetting VALUE (NULL, 'registrationEnabled', 'true', NOW(), NOW());
+INSERT INTO SystemSetting VALUE (NULL, 'wsServerHost', 'https://localhost:5223', NOW(), NOW());
+INSERT INTO SystemSetting VALUE (NULL, 'wsServerChannel', 'iot-leds', NOW(), NOW());
+INSERT INTO SystemSetting VALUE (NULL, 'wsServerToken', '', NOW(), NOW());
