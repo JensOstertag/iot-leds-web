@@ -29,7 +29,7 @@
     "scripts": {
         "dev": [
             "Composer\\Config::disableProcessTimeout",
-            "docker compose -f docker-compose-dev.yml up"
+            "docker compose -f docker-compose-dev.yml up --build"
         ],
         "test": "vendor/bin/pest tests",
         "build": "framework/src/lib/build/build.sh",
