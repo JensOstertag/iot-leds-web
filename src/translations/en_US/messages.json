@@ -137,6 +137,11 @@
     "System settings": "System settings",
     "Configure the system to your needs.": "Configure the system to your needs.",
     "Registration enabled": "Registration enabled",
+    "WebSocket server host": "WebSocket server host",
+    "WebSocket server channel": "WebSocket server channel",
+    "WebSocket server token": "WebSocket server token",
+    "The WebSocket channel has been created.": "The WebSocket channel has been created.",
+    "Failed to create the WebSocket channel.": "Failed to create the WebSocket channel.",
     "The system settings have been saved.": "The system settings have been saved.",
 
     "Search...": "Search...",
