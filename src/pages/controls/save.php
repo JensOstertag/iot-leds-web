@@ -33,10 +33,20 @@ $device = $post["device"];
 $animation = $post["animation"];
 
 $deviceAnimation = $device->getDeviceAnimation();
+$animationChanged = false;
 
 if(!$deviceAnimation instanceof DeviceAnimation) {
     $deviceAnimation = new DeviceAnimation();
     $deviceAnimation->setDeviceId($device->getId());
+
+    $animationChanged = true;
+}
+
+if($deviceAnimation->getAnimationId() !== $animation->getId()) {
+    $animationChanged = true;
+}
+if($deviceAnimation->getPower() !== ($post["power"] === 1)) {
+    $animationChanged = true;
 }
 
 if($animation instanceof Animation) {
@@ -46,6 +56,10 @@ if($animation instanceof Animation) {
 }
 $deviceAnimation->setPower($post["power"] === 1);
 DeviceAnimation::dao()->save($deviceAnimation);
+
+if($animationChanged) {
+    WebSocketMessagingUtil::sendAnimationMessage($device);
+}
 
 new InfoMessage(t("The animation has been saved."), InfoMessageType::SUCCESS);
 Comm::redirect(Router::generate("control-overview"));

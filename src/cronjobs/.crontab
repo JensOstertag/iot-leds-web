@@ -10,4 +10,5 @@
 # * * * * * command to be executed
 #
 # Example:
-# * * * * * php /app/src/cronjobs/cronjob-example.php
+*/5 * * * * php /app/src/cronjobs/ping-websocket-server.php
+*/5 * * * * php /app/src/cronjobs/ping-websocket-subscribers.php

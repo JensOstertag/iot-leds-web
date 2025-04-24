@@ -4,6 +4,10 @@ $user = Auth::enforceLogin(PermissionLevel::ADMIN->value, Router::generate("inde
 
 $registrationEnabled = SystemSetting::dao()->get("registrationEnabled");
 
+$webSocketHost = SystemSetting::dao()->get("wsServerHost");
+$webSocketChannel = SystemSetting::dao()->get("wsServerChannel");
+$webSocketToken = SystemSetting::dao()->get("wsServerToken");
+
 $breadcrumbs = [
     [
         "name" => t("Dashboard"),
@@ -18,5 +22,8 @@ $breadcrumbs = [
 
 echo Blade->run("systemsettings.systemsettings", [
     "breadcrumbs" => $breadcrumbs,
-    "registrationEnabled" => $registrationEnabled
+    "registrationEnabled" => $registrationEnabled,
+    "webSocketHost" => $webSocketHost,
+    "webSocketChannel" => $webSocketChannel,
+    "webSocketToken" => $webSocketToken,
 ]);

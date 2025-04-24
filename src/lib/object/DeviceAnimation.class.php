@@ -49,4 +49,33 @@ class DeviceAnimation extends GenericObject {
     public function setPower(?bool $power): void {
         $this->power = $power;
     }
+
+    public function generateApiResponse(): array {
+        $animation = $this->getAnimation();
+        if(!$animation instanceof Animation) {
+            return [
+                "animation" => null,
+                "power" => $this->getPower()
+            ];
+        }
+
+        $animationType = AnimationType::from($animation->getAnimationType())->name;
+        $colors = $animation->getParsedColors();
+
+        $colorObjects = [];
+        foreach($colors as $color) {
+            $colorObjects[] = ApiColor::fromHtmlCode($color);
+        }
+
+        return [
+            "animation" => [
+                "id" => $animation->getId(),
+                "name" => $animation->getName(),
+                "type" => $animationType,
+                "colors" => $colorObjects,
+                "durationPerColor" => $animation->getDurationPerColor()
+            ],
+            "power" => $this->getPower()
+        ];
+    }
 }

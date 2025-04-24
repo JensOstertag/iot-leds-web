@@ -15,6 +15,11 @@ $validation = \validation\Validator::create([
             \validation\IsRequired::create()->setErrorMessage("\"deviceApiKey\" is required"),
             \validation\IsString::create()->setErrorMessage("\"deviceApiKey\" must be a string"),
             \validation\MaxLength::create(256)->setErrorMessage("\"deviceApiKey\" must not be longer than 256 characters"),
+        ]),
+        "webSocketUuid" => \validation\Validator::create([
+            \validation\IsRequired::create()->setErrorMessage("\"webSocketUuid\" is required"),
+            \validation\IsString::create()->setErrorMessage("\"webSocketUuid\" must be a string"),
+            \validation\MaxLength::create(64)->setErrorMessage("\"webSocketUuid\" must not be longer than 64 characters"),
         ])
     ])
 ]);
@@ -34,12 +39,9 @@ if(!$device instanceof Device) {
     ]);
 }
 
-$deviceAnimation = $device->getDeviceAnimation();
-if(!$deviceAnimation instanceof DeviceAnimation) {
-    Comm::apiSendJson(HTTPResponses::$RESPONSE_OK, [
-        "animation" => null,
-        "power" => false
-    ]);
-}
+$device->setWebSocketUuid($post["webSocketUuid"]);
+Device::dao()->save($device);
 
-Comm::apiSendJson(HTTPResponses::$RESPONSE_OK, $deviceAnimation->generateApiResponse());
+WebSocketMessagingUtil::sendAnimationMessage($device);
+
+Comm::apiSendJson(HTTPResponses::$RESPONSE_OK, []);
