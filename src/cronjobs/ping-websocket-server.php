@@ -19,7 +19,18 @@ if($response) {
 
 Logger::getLogger("WS-PING")->error("Ping failed");
 
-// TODO: Delete all subscribers
+// Delete all subscribers
+$subscribedDevices = Device::dao()->getObjects([
+    [
+        "field" => "webSocketUuid",
+        "filterType" => DAOFilterType::NOT_EQUALS,
+        "filterValue" => null
+    ]
+]);
+foreach($subscribedDevices as $device) {
+    $device->setWebSocketUuid(null);
+    Device::dao()->save($device);
+}
 
 Logger::getLogger("WS-PING")->info("Attempting to recreate channel...");
 
