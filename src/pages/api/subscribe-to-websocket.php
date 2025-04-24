@@ -42,6 +42,6 @@ if(!$device instanceof Device) {
 $device->setWebSocketUuid($post["webSocketUuid"]);
 Device::dao()->save($device);
 
-// TODO: Send animation details via WebSocket connection
+WebSocketMessagingUtil::sendAnimationMessage($device);
 
 Comm::apiSendJson(HTTPResponses::$RESPONSE_OK, []);

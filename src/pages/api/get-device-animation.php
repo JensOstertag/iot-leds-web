@@ -42,29 +42,4 @@ if(!$deviceAnimation instanceof DeviceAnimation) {
     ]);
 }
 
-$animation = $deviceAnimation->getAnimation();
-if(!$animation instanceof Animation) {
-    Comm::apiSendJson(HTTPResponses::$RESPONSE_OK, [
-        "animation" => null,
-        "power" => false
-    ]);
-}
-
-$animationType = AnimationType::from($animation->getAnimationType())->name;
-$colors = $animation->getParsedColors();
-
-$colorObjects = [];
-foreach($colors as $color) {
-    $colorObjects[] = ApiColor::fromHtmlCode($color);
-}
-
-Comm::apiSendJson(HTTPResponses::$RESPONSE_OK, [
-    "animation" => [
-        "id" => $animation->getId(),
-        "name" => $animation->getName(),
-        "type" => $animationType,
-        "colors" => $colorObjects,
-        "durationPerColor" => $animation->getDurationPerColor()
-    ],
-    "power" => $deviceAnimation->getPower()
-]);
+Comm::apiSendJson(HTTPResponses::$RESPONSE_OK, $deviceAnimation->generateApiResponse());
