@@ -28,7 +28,7 @@ class WebSocketMessagingUtil {
         ];
     }
 
-    public static function pingAllDevices(): void {
+    public static function pingAllDevices(): bool {
         $devices = Device::dao()->getObjects([
             [
                 "field" => "webSocketUuid",
@@ -45,10 +45,10 @@ class WebSocketMessagingUtil {
         $token = SystemSetting::dao()->get("wsServerToken");
 
         if(count($webSocketUuids) === 0) {
-            return;
+            return true;
         }
 
-        WebSocketServerHandler::sendMessage($channel, $token, json_encode(self::pingMessage()), $webSocketUuids);
+        return WebSocketServerHandler::sendMessage($channel, $token, json_encode(self::pingMessage()), $webSocketUuids);
     }
 
     public static function sendAnimationMessage(Device $device): void {

@@ -131,7 +131,7 @@ class WebSocketServerHandler {
         $path = "/push";
         $payload = [
             "messageType" => "SERVER_ACTION",
-            "action" => "SEND_MESSAGE",
+            "action" => "PUSH_MESSAGE",
             "data" => [
                 "channel" => $channel,
                 "channelToken" => $token,
