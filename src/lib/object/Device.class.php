@@ -5,6 +5,7 @@ class Device extends GenericObject {
     public ?string $name = null;
     public ?string $deviceUid = null;
     public ?string $deviceApiKey = null;
+    public ?string $webSocketUuid = null;
 
     private ?User $user = null;
     private ?DeviceAnimation $deviceAnimation = null;
@@ -57,6 +58,14 @@ class Device extends GenericObject {
 
     public function setDeviceApiKey(?string $deviceApiKey): void {
         $this->deviceApiKey = $deviceApiKey;
+    }
+
+    public function getWebSocketUuid(): ?string {
+        return $this->webSocketUuid;
+    }
+
+    public function setWebSocketUuid(?string $webSocketUuid): void {
+        $this->webSocketUuid = $webSocketUuid;
     }
 
     public function generateApiKeyPair(): void {

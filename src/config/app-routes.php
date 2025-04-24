@@ -68,6 +68,7 @@ Router::addRoute("GET", "/auth/logout", "auth/logout.php", "auth-logout");
 
 // API
 Router::addRoute("POST", "/api/get-device-animation", "api/get-device-animation.php", "api-get-device-animation");
+Router::addRoute("POST", "/api/subscribe-to-websocket", "api/subscribe-to-websocket.php", "api-subscribe-to-websocket");
 // TODO: API endpoint to get all animations for a user
 // TODO: API endpoints to add, edit and delete animations
 // TODO: API endpoint to set the current animation and power state of a device
