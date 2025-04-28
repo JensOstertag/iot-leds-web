@@ -17,11 +17,10 @@ Webinterface to control IoT WS2812B-LEDs
 ## About
 This web application allows to control WS2812B LED strips over WiFi.
 Other controls often fail to allow customization of animations and often have proprietary controls.
-In this application, every user can create his own animations.
+In this application, every user can create their own animations.
 
-The counterpart to this application, the device, consists of an ESP8266 microcontroller which then controls the LED strip.
-The animation is fetched from the REST API.
-The device's code is however still in development.
+The counterpart to this application, the [device controller](https://github.com/JensOstertag/iot-leds-device), consists of an ESP8266 microcontroller, which then controls the LED strip.
+The animation information is pushed by the web application through WebSockets, for which a [WebSocket server](https://github.com/JensOstertag/WS-PushServer) is required.
 
 ## Dependencies
 The following tools and libraries are used:
