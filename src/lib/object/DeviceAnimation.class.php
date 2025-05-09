@@ -55,7 +55,8 @@ class DeviceAnimation extends GenericObject {
         if(!$animation instanceof Animation) {
             return [
                 "animation" => null,
-                "power" => $this->getPower()
+                "power" => $this->getPower(),
+                "deviceUid" => $this->getDevice()->getDeviceUid()
             ];
         }
 
@@ -75,7 +76,8 @@ class DeviceAnimation extends GenericObject {
                 "colors" => $colorObjects,
                 "durationPerColor" => $animation->getDurationPerColor()
             ],
-            "power" => $this->getPower()
+            "power" => $this->getPower(),
+            "deviceUid" => $this->getDevice()->getDeviceUid()
         ];
     }
 }

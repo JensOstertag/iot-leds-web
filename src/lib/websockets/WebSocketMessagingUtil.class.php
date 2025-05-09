@@ -16,7 +16,8 @@ class WebSocketMessagingUtil {
         if(!$deviceAnimation instanceof DeviceAnimation) {
             $animationData = [
                 "animation" => null,
-                "power" => false
+                "power" => false,
+                "deviceUid" => $device->getDeviceUid(),
             ];
         } else {
             $animationData = $deviceAnimation->generateApiResponse();
@@ -24,13 +25,14 @@ class WebSocketMessagingUtil {
 
         return [
             "type" => "ANIMATION",
-            "data" => $animationData
+            "data" => $animationData,
+            "deviceUid" => $device->getDeviceUid()
         ];
     }
 
     public static function sendAnimationMessage(Device $device): void {
         $message = self::animationMessage($device);
-        $encryptedMessage = $device->encryptWebSocketMessage(json_encode($message));
+        $encryptedMessage = json_encode($message);
 
         $channel = SystemSetting::dao()->get("wsServerChannel");
         $token = SystemSetting::dao()->get("wsServerToken");
