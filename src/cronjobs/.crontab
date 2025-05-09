@@ -10,5 +10,4 @@
 # * * * * * command to be executed
 #
 # Example:
-*/5 * * * * php /app/src/cronjobs/ping-websocket-server.php
-*/5 * * * * php /app/src/cronjobs/ping-websocket-subscribers.php
+* * * * * php /app/src/cronjobs/broadcast-animations.php

@@ -5,7 +5,6 @@ class Device extends GenericObject {
     public ?string $name = null;
     public ?string $deviceUid = null;
     public ?string $deviceApiKey = null;
-    public ?string $webSocketUuid = null;
 
     private ?User $user = null;
     private ?DeviceAnimation $deviceAnimation = null;
@@ -26,6 +25,32 @@ class Device extends GenericObject {
             ]);
         }
         return $this->deviceAnimation;
+    }
+
+    public function encryptWebSocketMessage(string $rawMessage) {
+        $cipher = "AES-256-CBC";
+        $keyLength = openssl_cipher_key_length($cipher);
+        $ivLength = openssl_cipher_iv_length($cipher);
+
+        $key = "";
+        $iv = "";
+        for($i = 0; $i < $keyLength; $i++) {
+            if(strlen($this->getDeviceApiKey()) > $i) {
+                $key .= $this->getDeviceApiKey()[$i];
+            } else {
+                $key .= chr(0);
+            }
+        }
+        for($i = 0; $i < $ivLength; $i++) {
+            if(strlen($this->getDeviceUid()) > $i) {
+                $iv .= $this->getDeviceUid()[$i];
+            } else {
+                $iv .= chr(0);
+            }
+        }
+
+        $ciphertext = openssl_encrypt($rawMessage, $cipher, $key, OPENSSL_RAW_DATA, $iv);
+        return base64_encode($ciphertext);
     }
 
     public function getUserId(): ?int {
@@ -58,14 +83,6 @@ class Device extends GenericObject {
 
     public function setDeviceApiKey(?string $deviceApiKey): void {
         $this->deviceApiKey = $deviceApiKey;
-    }
-
-    public function getWebSocketUuid(): ?string {
-        return $this->webSocketUuid;
-    }
-
-    public function setWebSocketUuid(?string $webSocketUuid): void {
-        $this->webSocketUuid = $webSocketUuid;
     }
 
     public function generateApiKeyPair(): void {

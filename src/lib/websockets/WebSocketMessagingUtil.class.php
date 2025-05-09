@@ -28,38 +28,12 @@ class WebSocketMessagingUtil {
         ];
     }
 
-    public static function pingAllDevices(): bool {
-        $devices = Device::dao()->getObjects([
-            [
-                "field" => "webSocketUuid",
-                "filterType" => DAOFilterType::NOT_EQUALS,
-                "filterValue" => null
-            ]
-        ]);
-
-        $webSocketUuids = array_map(function($device) {
-            return $device->getWebSocketUuid();
-        }, $devices);
+    public static function sendAnimationMessage(Device $device): void {
+        $message = self::animationMessage($device);
+        $encryptedMessage = $device->encryptWebSocketMessage(json_encode($message));
 
         $channel = SystemSetting::dao()->get("wsServerChannel");
         $token = SystemSetting::dao()->get("wsServerToken");
-
-        if(count($webSocketUuids) === 0) {
-            return true;
-        }
-
-        return WebSocketServerHandler::sendMessage($channel, $token, json_encode(self::pingMessage()), $webSocketUuids);
-    }
-
-    public static function sendAnimationMessage(Device $device): void {
-        $message = self::animationMessage($device);
-        $webSocketUuid = $device->getWebSocketUuid();
-        if($webSocketUuid !== null) {
-            $channel = SystemSetting::dao()->get("wsServerChannel");
-            $token = SystemSetting::dao()->get("wsServerToken");
-            WebSocketServerHandler::sendMessage($channel, $token, json_encode($message), [
-                $webSocketUuid
-            ]);
-        }
+        WebSocketServerHandler::broadcastMessage($channel, $token, $encryptedMessage);
     }
 }
