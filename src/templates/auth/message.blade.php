@@ -7,7 +7,7 @@
 
     @if(isset($showLogin) && $showLogin)
         <a class="{{ TailwindUtil::button() }}"
-           href="{{ Router::generate("auth-login") }}">
+           href="{{ Router->generate("auth-login") }}">
             {{ t("Log in") }}
         </a>
     @endif

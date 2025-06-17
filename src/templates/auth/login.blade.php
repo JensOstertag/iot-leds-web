@@ -2,12 +2,12 @@
     <p class="mb-2">
         {{ t("Don't have an account yet?") }}
         <a class="text-primary hover:text-primary-effect cursor-pointer transition-all"
-           href="{{ Router::generate("auth-register") }}">
+           href="{{ Router->generate("auth-register") }}">
             {{ t("Click here to register.") }}
         </a>
     </p>
 
-    <form method="post" action="{{ Router::generate("auth-login-action") }}">
+    <form method="post" action="{{ Router->generate("auth-login-action") }}">
         <div class="{{ TailwindUtil::inputGroup() }} mb-2">
             <label class="{{ TailwindUtil::$inputLabel }}"
                    for="username"
@@ -43,7 +43,7 @@
         </button>
 
         <a class="text-sm text-gray hover:text-gray-effect cursor-pointer transition-all"
-           href="{{ Router::generate("auth-recovery-request") }}">
+           href="{{ Router->generate("auth-recovery-request") }}">
             {{ t("Forgot password?") }}
         </a>
     </form>

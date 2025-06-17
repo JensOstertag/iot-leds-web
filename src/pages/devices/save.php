@@ -1,6 +1,6 @@
 <?php
 
-$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router::generate("index"));
+$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router->generate("index"));
 
 $validation = \validation\Validator::create([
     \validation\IsRequired::create(),
@@ -22,7 +22,7 @@ try {
     $post = $validation->getValidatedValue($_POST);
 } catch(\validation\ValidationException $e) {
     new InfoMessage($e->getMessage(), InfoMessageType::ERROR);
-    Comm::redirect(Router::generate("device-overview"));
+    Router->redirect(Router->generate("device-overview"));
 }
 
 $device = new Device();
@@ -47,4 +47,4 @@ if(!$device->getDeviceAnimation() instanceof DeviceAnimation) {
 Logger::getLogger("Devices")->info("User {$user->getId()} ({$user->getUsername()}, PL {$user->getPermissionLevel()}) saved the device {$device->getId()} ({$device->getName()})");
 
 new InfoMessage(t("The device has been saved."), InfoMessageType::SUCCESS);
-Comm::redirect(Router::generate("device-overview"));
+Router->redirect(Router->generate("device-overview"));

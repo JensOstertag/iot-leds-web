@@ -14,9 +14,9 @@ services:
         environment:
             TZ: "UTC"
             MYSQL_ROOT_PASSWORD: "root" # ADJUST
-            MYSQL_DATABASE: "framework-app" # ADJUST
-            MYSQL_USER: "framework-app" # ADJUST
-            MYSQL_PASSWORD: "framework-app" # ADJUST
+            MYSQL_DATABASE: "iot-leds-web" # ADJUST
+            MYSQL_USER: "iot-leds-web" # ADJUST
+            MYSQL_PASSWORD: "iot-leds-web" # ADJUST
         volumes:
             - "database:/var/lib/mysql"
         networks:
@@ -37,13 +37,13 @@ services:
             - "app"
 
     backup:
-        image: "ghcr.io/jensostertag/mysql-backup:latest"
+        image: "ghcr.io/struktal/mysql-backup:latest"
         restart: "always"
         environment:
             TZ: "UTC"
             DB_HOST: "database"
-            DB_USER: "framework-app" # ADJUST
-            DB_PASS: "framework-app" # ADJUST
-            DB_DATABASE: "framework-app" # ADJUST
+            DB_USER: "iot-leds-web" # ADJUST
+            DB_PASS: "iot-leds-web" # ADJUST
+            DB_DATABASE: "iot-leds-web" # ADJUST
         volumes:
             - "./database-backup:/backup"

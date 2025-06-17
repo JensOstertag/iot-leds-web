@@ -10,7 +10,7 @@
         @endif
     </h1>
 
-    <form method="post" action="{{ Router::generate("user-save") }}">
+    <form method="post" action="{{ Router->generate("user-save") }}">
         @if(!empty($account))
             <input type="hidden" name="user" value="{{ $account->getId() }}">
         @endif
@@ -83,7 +83,7 @@
             <button type="button"
                     id="delete-user"
                     class="{{ TailwindUtil::button(false, "danger") }} gap-2"
-                    data-delete-href="{{ Router::generate("user-delete", ["user" => $account->getId()]) }}">
+                    data-delete-href="{{ Router->generate("user-delete", ["user" => $account->getId()]) }}">
                 @include("components.icons.buttonload")
                 @include("components.icons.delete")
                 {{ t("Delete") }}
@@ -93,7 +93,7 @@
 
     @include("components.modals.defaultabort")
     <script type="module">
-        import * as UsersEdit from "{{ Router::staticFilePath("js/users/edit.js") }}";
+        import * as UsersEdit from "{{ Router->staticFilePath("js/users/edit.js") }}";
         UsersEdit.init();
     </script>
 @endcomponent

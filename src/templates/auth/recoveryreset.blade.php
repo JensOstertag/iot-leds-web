@@ -3,7 +3,7 @@
         {{ t("Please enter your new password.") }}
     </p>
 
-    <form method="post" action="{{ Router::generate("auth-recovery-reset-action") }}">
+    <form method="post" action="{{ Router->generate("auth-recovery-reset-action") }}">
         <div class="{{ TailwindUtil::inputGroup() }} mb-2">
             <label class="{{ TailwindUtil::$inputLabel }}"
                    for="password"
@@ -68,7 +68,7 @@
     </form>
 
     <script type="module">
-        import * as PasswordStrength from "{{ Router::staticFilePath("js/auth/PasswordStrength.js") }}";
+        import * as PasswordStrength from "{{ Router->staticFilePath("js/auth/PasswordStrength.js") }}";
         PasswordStrength.init("password");
     </script>
 @endcomponent

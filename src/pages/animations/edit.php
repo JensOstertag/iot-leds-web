@@ -1,6 +1,6 @@
 <?php
 
-$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router::generate("index"));
+$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router->generate("index"));
 
 $validation = \validation\Validator::create([
     \validation\IsRequired::create(),
@@ -17,7 +17,7 @@ try {
     $get = $validation->getValidatedValue($_GET);
 } catch(\validation\ValidationException $e) {
     new InfoMessage($e->getMessage(), InfoMessageType::ERROR);
-    Comm::redirect(Router::generate("animation-overview"));
+    Router->redirect(Router->generate("animation-overview"));
 }
 
 $animation = $get["animation"];
@@ -25,16 +25,16 @@ $animation = $get["animation"];
 $breadcrumbs = [
     [
         "name" => t("Dashboard"),
-        "link" => Router::generate("dashboard"),
+        "link" => Router->generate("dashboard"),
         "iconComponent" => "components.icons.dashboard"
     ],
     [
         "name" => t("Animations"),
-        "link" => Router::generate("animation-overview")
+        "link" => Router->generate("animation-overview")
     ],
     [
         "name" => isset($animation) ? t("Edit animation \$\$name\$\$", ["name" => $animation->getName()]) : t("Create animation"),
-        "link" => Router::generate(isset($animation) ? "animation-edit" : "animation-create", isset($animation) ? ["animation" => $animation->getId()] : [])
+        "link" => Router->generate(isset($animation) ? "animation-edit" : "animation-create", isset($animation) ? ["animation" => $animation->getId()] : [])
     ]
 ];
 

@@ -10,7 +10,7 @@
         @endif
     </h1>
 
-    <form method="post" action="{{ Router::generate("device-save") }}">
+    <form method="post" action="{{ Router->generate("device-save") }}">
         @if(!empty($device))
             <input type="hidden" name="device" value="{{ $device->getId() }}">
         @endif
@@ -65,7 +65,7 @@
             <button type="button"
                     id="delete-device"
                     class="{{ TailwindUtil::button(false, "danger") }} gap-2"
-                    data-delete-href="{{ Router::generate("device-delete", ["device" => $device->getId()]) }}">
+                    data-delete-href="{{ Router->generate("device-delete", ["device" => $device->getId()]) }}">
                 @include("components.icons.buttonload")
                 @include("components.icons.delete")
                 {{ t("Delete") }}
@@ -75,7 +75,7 @@
 
     @include("components.modals.defaultabort")
     <script type="module">
-        import * as DevicesEdit from "{{ Router::staticFilePath("js/devices/edit.js") }}";
+        import * as DevicesEdit from "{{ Router->staticFilePath("js/devices/edit.js") }}";
         DevicesEdit.init();
     </script>
 @endcomponent

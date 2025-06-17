@@ -1,6 +1,6 @@
 <?php
 
-$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router::generate("index"));
+$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router->generate("index"));
 
 $validation = \validation\Validator::create([
     \validation\IsRequired::create(),
@@ -18,7 +18,7 @@ try {
     $get = $validation->getValidatedValue($_GET);
 } catch(\validation\ValidationException $e) {
     new InfoMessage($e->getMessage(), InfoMessageType::ERROR);
-    Comm::redirect(Router::generate("animation-overview"));
+    Router->redirect(Router->generate("animation-overview"));
 }
 
 $animation = $get["animation"];
@@ -35,4 +35,4 @@ Animation::dao()->delete($animation);
 Logger::getLogger("Animations")->info("User {$user->getId()} ({$user->getUsername()}, PL {$user->getPermissionLevel()}) deleted the animation {$animation->getId()} ({$animation->getName()})");
 
 new InfoMessage(t("The animation has been deleted."), InfoMessageType::SUCCESS);
-Comm::redirect(Router::generate("animation-overview"));
+Router->redirect(Router->generate("animation-overview"));

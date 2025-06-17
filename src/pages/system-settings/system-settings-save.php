@@ -1,6 +1,6 @@
 <?php
 
-$user = Auth::enforceLogin(PermissionLevel::ADMIN->value, Router::generate("index"));
+$user = Auth::enforceLogin(PermissionLevel::ADMIN->value, Router->generate("index"));
 
 $validation = \validation\Validator::create([
     \validation\IsRequired::create(),
@@ -22,7 +22,7 @@ try {
     $post = $validation->getValidatedValue($_POST);
 } catch(validation\ValidationException $e) {
     new InfoMessage($e->getMessage(), InfoMessageType::ERROR);
-    Comm::redirect(Router::generate("system-settings"));
+    Router->redirect(Router->generate("system-settings"));
 }
 
 $registrationEnabled = $post["registrationEnabled"] === 1;
@@ -46,9 +46,9 @@ if($oldWsHost !== $webSocketHost || $oldWsChannel !== $webSocketChannel) {
         new InfoMessage(t("The WebSocket channel has been created."), InfoMessageType::SUCCESS);
     } else {
         new InfoMessage(t("Failed to create the WebSocket channel."), InfoMessageType::ERROR);
-        Comm::redirect(Router::generate("system-settings"));
+        Router->redirect(Router->generate("system-settings"));
     }
 }
 
 new InfoMessage(t("The system settings have been saved."), InfoMessageType::SUCCESS);
-Comm::redirect(Router::generate("dashboard"));
+Router->redirect(Router->generate("dashboard"));

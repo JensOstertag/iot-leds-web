@@ -1,6 +1,6 @@
 <?php
 
-class DeviceAnimation extends GenericObject {
+class DeviceAnimation extends \struktal\ORM\GenericObject {
     public ?int $deviceId = null;
     public ?int $animationId = null;
     public ?bool $power = false;

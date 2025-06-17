@@ -1,6 +1,6 @@
 <?php
 
-$user = Auth::enforceLogin(PermissionLevel::ADMIN->value, Router::generate("index"));
+$user = Auth::enforceLogin(PermissionLevel::ADMIN->value, Router->generate("index"));
 
 $registrationEnabled = SystemSetting::dao()->get("registrationEnabled");
 
@@ -11,12 +11,12 @@ $webSocketToken = SystemSetting::dao()->get("wsServerToken");
 $breadcrumbs = [
     [
         "name" => t("Dashboard"),
-        "link" => Router::generate("dashboard"),
+        "link" => Router->generate("dashboard"),
         "iconComponent" => "components.icons.dashboard"
     ],
     [
         "name" => t("System settings"),
-        "link" => Router::generate("system-settings")
+        "link" => Router->generate("system-settings")
     ]
 ];
 

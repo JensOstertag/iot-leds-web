@@ -1,6 +1,6 @@
 <?php
 
-$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router::generate("index"));
+$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router->generate("index"));
 
 $validation = \validation\Validator::create([
     \validation\IsRequired::create(),
@@ -26,7 +26,7 @@ try {
     $post = $validation->getValidatedValue($_POST);
 } catch(\validation\ValidationException $e) {
     new InfoMessage($e->getMessage(), InfoMessageType::ERROR);
-    Comm::redirect(Router::generate("control-overview"));
+    Router->redirect(Router->generate("control-overview"));
 }
 
 $device = $post["device"];
@@ -62,4 +62,4 @@ if($animationChanged) {
 }
 
 new InfoMessage(t("The animation has been saved."), InfoMessageType::SUCCESS);
-Comm::redirect(Router::generate("control-overview"));
+Router->redirect(Router->generate("control-overview"));

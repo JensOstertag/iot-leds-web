@@ -6,7 +6,7 @@
         {{ t("\$\$name\$\$", ["name" => $device->getName()]) }}
     </h1>
 
-    <form method="post" action="{{ Router::generate("control-save") }}">
+    <form method="post" action="{{ Router->generate("control-save") }}">
         <input type="hidden" name="device" value="{{ $device->getId() }}">
 
         <div class="{{ TailwindUtil::inputGroup() }} mb-2">

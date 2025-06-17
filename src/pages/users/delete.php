@@ -1,6 +1,6 @@
 <?php
 
-$user = Auth::enforceLogin(PermissionLevel::ADMIN->value, Router::generate("index"));
+$user = Auth::enforceLogin(PermissionLevel::ADMIN->value, Router->generate("index"));
 
 $validation = \validation\Validator::create([
     \validation\IsRequired::create(),
@@ -16,7 +16,7 @@ try {
     $get = $validation->getValidatedValue($_GET);
 } catch(\validation\ValidationException $e) {
     new InfoMessage($e->getMessage(), InfoMessageType::ERROR);
-    Comm::redirect(Router::generate("user-overview"));
+    Router->redirect(Router->generate("user-overview"));
 }
 
 $account = $get["user"];
@@ -38,4 +38,4 @@ User::dao()->delete($account);
 Logger::getLogger("Users")->info("User {$user->getId()} ({$user->getUsername()}, PL {$user->getPermissionLevel()}) deleted the account {$account->getId()} ({$account->getUsername()})");
 
 new InfoMessage(t("The user has been deleted."), InfoMessageType::SUCCESS);
-Comm::redirect(Router::generate("user-overview"));
+Router->redirect(Router->generate("user-overview"));

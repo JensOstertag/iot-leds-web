@@ -7,7 +7,7 @@
     </h1>
 
     <div class="overflow-x-auto">
-        <table id="controls-table" class="stripe" data-table-ajax="{{ Router::generate("control-overview-table") }}">
+        <table id="controls-table" class="stripe" data-table-ajax="{{ Router->generate("control-overview-table") }}">
             <thead>
                 <tr>
                     <th>{{ t("Device name") }}</th>
@@ -20,7 +20,7 @@
     </div>
 
     <script type="module">
-        import * as ControlsOverview from "{{ Router::staticFilePath("js/controls/overview.js") }}";
+        import * as ControlsOverview from "{{ Router->staticFilePath("js/controls/overview.js") }}";
         ControlsOverview.init({
             "Search...": "{{ t("Search...") }}",
             "Loading...": "{{ t("Loading...") }}",

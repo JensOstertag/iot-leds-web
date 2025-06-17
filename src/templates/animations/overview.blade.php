@@ -7,14 +7,14 @@
     </h1>
 
     <a id="create-animation"
-       href="{{ Router::generate("animation-create") }}"
+       href="{{ Router->generate("animation-create") }}"
        class="{{ TailwindUtil::button() }} gap-2">
         @include("components.icons.plus")
         {{ t("Create animation") }}
     </a>
 
     <div class="overflow-x-auto">
-        <table id="animations-table" class="stripe" data-table-ajax="{{ Router::generate("animation-overview-table") }}">
+        <table id="animations-table" class="stripe" data-table-ajax="{{ Router->generate("animation-overview-table") }}">
             <thead>
                 <tr>
                     <th>{{ t("Animation name") }}</th>
@@ -27,7 +27,7 @@
     </div>
 
     <script type="module">
-        import * as AnimationsOverview from "{{ Router::staticFilePath("js/animations/overview.js") }}";
+        import * as AnimationsOverview from "{{ Router->staticFilePath("js/animations/overview.js") }}";
         AnimationsOverview.init({
             "Search...": "{{ t("Search...") }}",
             "Loading...": "{{ t("Loading...") }}",

@@ -1,6 +1,6 @@
 <?php
 
-$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router::generate("index"));
+$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router->generate("index"));
 
 $validation = \validation\Validator::create([
     \validation\IsRequired::create(),
@@ -18,7 +18,7 @@ try {
     $get = $validation->getValidatedValue($_GET);
 } catch(\validation\ValidationException $e) {
     new InfoMessage($e->getMessage(), InfoMessageType::ERROR);
-    Comm::redirect(Router::generate("control-overview"));
+    Router->redirect(Router->generate("control-overview"));
 }
 
 $device = $get["device"];
@@ -35,16 +35,16 @@ if($device->getDeviceAnimation() instanceof DeviceAnimation) {
 $breadcrumbs = [
     [
         "name" => t("Dashboard"),
-        "link" => Router::generate("dashboard"),
+        "link" => Router->generate("dashboard"),
         "iconComponent" => "components.icons.dashboard"
     ],
     [
         "name" => t("Control panel"),
-        "link" => Router::generate("control-overview")
+        "link" => Router->generate("control-overview")
     ],
     [
         "name" => t("\$\$name\$\$", ["name" => $device->getName()]),
-        "link" => Router::generate("control-edit", ["device" => $device->getId()])
+        "link" => Router->generate("control-edit", ["device" => $device->getId()])
     ]
 ];
 

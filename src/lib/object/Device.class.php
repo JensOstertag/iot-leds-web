@@ -1,6 +1,6 @@
 <?php
 
-class Device extends GenericObject {
+class Device extends \struktal\ORM\GenericObject {
     public ?int $userId = null;
     public ?string $name = null;
     public ?string $deviceUid = null;

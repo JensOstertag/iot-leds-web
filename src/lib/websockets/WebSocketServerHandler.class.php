@@ -2,9 +2,9 @@
 
 class WebSocketServerHandler {
     private static function sendRequest(string $host, string $path, array $payload) {
-        $curl = new \jensostertag\Curl\Curl();
+        $curl = new \struktal\Curl\Curl();
         $curl->setUrl($host . $path);
-        $curl->setMethod(\jensostertag\Curl\Curl::$METHOD_POST);
+        $curl->setMethod(\struktal\Curl\Curl::$METHOD_POST);
         $curl->setHeaders([
             "Accept: application/json"
         ]);

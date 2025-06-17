@@ -2,7 +2,7 @@
 
 // Check whether the user is already logged in
 if(Auth::isLoggedIn()) {
-    Comm::redirect(Router::generate("index"));
+    Router->redirect(Router->generate("index"));
 }
 
 // Clear old session variables
@@ -30,7 +30,7 @@ try {
     $get = $validation->getValidatedValue($_GET);
 } catch(validation\ValidationException $e) {
     new InfoMessage($e->getMessage(), InfoMessageType::ERROR);
-    Comm::redirect(Router::generate("auth-login"));
+    Router->redirect(Router->generate("auth-login"));
 }
 
 $otpId = base64_decode(urldecode($get["otpid"]));
@@ -40,26 +40,26 @@ $otp = urldecode($get["otp"]);
 $user = User::dao()->getObject([
     "id" => $otpId,
     "emailVerified" => true,
-    [
-        "field" => "oneTimePassword",
-        "filterType" => DAOFilterType::NOT_EQUALS,
-        "filterValue" => null
-    ],
-    [
-        "field" => "oneTimePasswordExpiration",
-        "filterType" => DAOFilterType::GREATER_THAN_EQUALS,
-        "filterValue" => new DateTime()
-    ]
+    new \struktal\ORM\DAOFilter(
+        \struktal\ORM\DAOFilterOperator::NOT_EQUALS,
+        "oneTimePassword",
+        null
+    ),
+    new \struktal\ORM\DAOFilter(
+        \struktal\ORM\DAOFilterOperator::GREATER_THAN_EQUALS,
+        "oneTimePasswordExpiration",
+        new DateTime()
+    )
 ]);
 if(!$user instanceof User) {
     Logger::getLogger("Recovery")->info("Attempted to recover password, but couldn't find user with otpid \"{$otpId}\"");
     new InfoMessage(t("The URL has already been invalidated. Please log in or request a new password recovery email."), InfoMessageType::ERROR);
-    Comm::redirect(Router::generate("auth-login"));
+    Router->redirect(Router->generate("auth-login"));
 }
 if(!password_verify($otp, $user->getOneTimePassword())) {
     Logger::getLogger("Recovery")->info("Attempted to recover password, but one-time password does not match");
     new InfoMessage(t("The URL has already been invalidated. Please log in or request a new password recovery email."), InfoMessageType::ERROR);
-    Comm::redirect(Router::generate("auth-login"));
+    Router->redirect(Router->generate("auth-login"));
 }
 
 // Write user details to session

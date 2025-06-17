@@ -1,6 +1,6 @@
 <?php
 
-$user = Auth::enforceLogin(PermissionLevel::ADMIN->value, Router::generate("index"));
+$user = Auth::enforceLogin(PermissionLevel::ADMIN->value, Router->generate("index"));
 
 $validation = \validation\Validator::create([
     \validation\IsRequired::create(),
@@ -15,7 +15,7 @@ try {
     $get = $validation->getValidatedValue($_GET);
 } catch(\validation\ValidationException $e) {
     new InfoMessage($e->getMessage(), InfoMessageType::ERROR);
-    Comm::redirect(Router::generate("user-overview"));
+    Router->redirect(Router->generate("user-overview"));
 }
 
 $account = $get["user"];
@@ -23,16 +23,16 @@ $account = $get["user"];
 $breadcrumbs = [
     [
         "name" => t("Dashboard"),
-        "link" => Router::generate("dashboard"),
+        "link" => Router->generate("dashboard"),
         "iconComponent" => "components.icons.dashboard"
     ],
     [
         "name" => t("User management"),
-        "link" => Router::generate("user-overview")
+        "link" => Router->generate("user-overview")
     ],
     [
         "name" => isset($account) ? t("Edit user \$\$name\$\$", ["name" => $account->getUsername()]) : t("Create user"),
-        "link" => Router::generate(isset($account) ? "user-edit" : "user-create", isset($account) ? ["user" => $account->getId()] : [])
+        "link" => Router->generate(isset($account) ? "user-edit" : "user-create", isset($account) ? ["user" => $account->getId()] : [])
     ]
 ];
 

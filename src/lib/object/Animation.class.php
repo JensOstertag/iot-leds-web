@@ -1,6 +1,6 @@
 <?php
 
-class Animation extends GenericObject {
+class Animation extends \struktal\ORM\GenericObject {
     public ?int $userId = null;
     public ?string $name = null;
     public int $animationType = AnimationType::STATIC->value;

@@ -1,5 +1,5 @@
 <?php
 
-class DeviceDAO extends GenericObjectDAO {
+class DeviceDAO extends \struktal\ORM\GenericObjectDAO {
 
 }

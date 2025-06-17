@@ -10,7 +10,7 @@
         @endif
     </h1>
 
-    <form method="post" action="{{ Router::generate("animation-save") }}">
+    <form method="post" action="{{ Router->generate("animation-save") }}">
         @if(!empty($animation))
             <input type="hidden" name="animation" value="{{ $animation->getId() }}">
         @endif
@@ -122,7 +122,7 @@
             <button type="button"
                     id="delete-animation"
                     class="{{ TailwindUtil::button(false, "danger") }} gap-2"
-                    data-delete-href="{{ Router::generate("animation-delete", ["animation" => $animation->getId()]) }}">
+                    data-delete-href="{{ Router->generate("animation-delete", ["animation" => $animation->getId()]) }}">
                 @include("components.icons.buttonload")
                 @include("components.icons.delete")
                 {{ t("Delete") }}
@@ -132,7 +132,7 @@
 
     @include("components.modals.defaultabort")
     <script type="module">
-        import * as AnimationsEdit from "{{ Router::staticFilePath("js/animations/edit.js") }}";
+        import * as AnimationsEdit from "{{ Router->staticFilePath("js/animations/edit.js") }}";
         AnimationsEdit.init();
     </script>
 @endcomponent

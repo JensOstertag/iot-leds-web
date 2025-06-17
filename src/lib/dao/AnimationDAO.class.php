@@ -1,5 +1,5 @@
 <?php
 
-class AnimationDAO extends GenericObjectDAO {
+class AnimationDAO extends \struktal\ORM\GenericObjectDAO {
 
 }

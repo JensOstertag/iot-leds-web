@@ -7,14 +7,14 @@
     </h1>
 
     <a id="create-device"
-       href="{{ Router::generate("device-create") }}"
+       href="{{ Router->generate("device-create") }}"
        class="{{ TailwindUtil::button() }} gap-2">
         @include("components.icons.plus")
         {{ t("Create device") }}
     </a>
 
     <div class="overflow-x-auto">
-        <table id="devices-table" class="stripe" data-table-ajax="{{ Router::generate("device-overview-table") }}">
+        <table id="devices-table" class="stripe" data-table-ajax="{{ Router->generate("device-overview-table") }}">
             <thead>
                 <tr>
                     <th>{{ t("Device name") }}</th>
@@ -27,7 +27,7 @@
     </div>
 
     <script type="module">
-        import * as DevicesOverview from "{{ Router::staticFilePath("js/devices/overview.js") }}";
+        import * as DevicesOverview from "{{ Router->staticFilePath("js/devices/overview.js") }}";
         DevicesOverview.init({
             "Search...": "{{ t("Search...") }}",
             "Loading...": "{{ t("Loading...") }}",

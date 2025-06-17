@@ -1,6 +1,6 @@
 <?php
 
-$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router::generate("index"));
+$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router->generate("index"));
 
 $validation = \validation\Validator::create([
     \validation\IsRequired::create(),
@@ -44,7 +44,7 @@ try {
     $post = $validation->getValidatedValue($_POST);
 } catch(\validation\ValidationException $e) {
     new InfoMessage($e->getMessage(), InfoMessageType::ERROR);
-    Comm::redirect(Router::generate("animation-overview"));
+    Router->redirect(Router->generate("animation-overview"));
 }
 
 $animation = new Animation();
@@ -62,4 +62,4 @@ Animation::dao()->save($animation);
 Logger::getLogger("Animations")->info("User {$user->getId()} ({$user->getUsername()}, PL {$user->getPermissionLevel()}) saved the animation {$animation->getId()} ({$animation->getName()})");
 
 new InfoMessage(t("The animation has been saved."), InfoMessageType::SUCCESS);
-Comm::redirect(Router::generate("animation-overview"));
+Router->redirect(Router->generate("animation-overview"));

@@ -1,6 +1,6 @@
 <?php
 
-$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router::generate("index"));
+$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router->generate("index"));
 
 $animations = Animation::dao()->getObjects([
     "userId" => $user->getId()
@@ -8,7 +8,7 @@ $animations = Animation::dao()->getObjects([
 
 $animations = array_map(function(Animation $animation) {
     $array = $animation->toArray();
-    $array["editHref"] = Router::generate("animation-edit", ["animation" => $animation->getId()]);
+    $array["editHref"] = Router->generate("animation-edit", ["animation" => $animation->getId()]);
     unset($array["id"]);
     unset($array["created"]);
     unset($array["updated"]);

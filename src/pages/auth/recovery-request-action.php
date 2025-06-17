@@ -2,7 +2,7 @@
 
 // Check whether the user is already logged in
 if(Auth::isLoggedIn()) {
-    Comm::redirect(Router::generate("index"));
+    Router->redirect(Router->generate("index"));
 }
 
 // Check whether form fields are given
@@ -21,7 +21,7 @@ try {
     $post = $validation->getValidatedValue($_POST);
 } catch(validation\ValidationException $e) {
     new InfoMessage($e->getMessage(), InfoMessageType::ERROR);
-    Comm::redirect(Router::generate("auth-recovery-request"));
+    Router->redirect(Router->generate("auth-recovery-request"));
 }
 
 $user = User::dao()->getObject([
@@ -29,10 +29,10 @@ $user = User::dao()->getObject([
     "emailVerified" => true
 ]);
 
-if(!$user instanceof GenericUser) {
+if(!$user instanceof User) {
     Logger::getLogger("Recovery")->info("Failed to request password recovery for email \"{$post["email"]}\"");
     new InfoMessage(t("An account with this email could not be found. Please check for spelling errors and try again."), InfoMessageType::ERROR);
-    Comm::redirect(Router::generate("auth-recovery-request"));
+    Router->redirect(Router->generate("auth-recovery-request"));
 }
 
 // Send password recovery mail
@@ -46,7 +46,7 @@ User::dao()->save($user);
 
 $otpIdEncoded = urlencode(base64_encode($user->getId()));
 $otpEncoded = urlencode($oneTimePassword);
-$verificationLink = Router::generate("auth-recovery-reset", [], true) . "?otpid=" . $otpIdEncoded . "&otp=" . $otpEncoded;
+$verificationLink = Router->generate("auth-recovery-reset", [], true) . "?otpid=" . $otpIdEncoded . "&otp=" . $otpEncoded;
 $mail = new Mail();
 $mail->setSubject(t("Password recovery"))
     ->setTextBody(
@@ -65,4 +65,4 @@ $mail->setSubject(t("Password recovery"))
     ->send();
 
 Logger::getLogger("Recovery")->info("Requested password recovery for user with email \"{$post["email"]}\" (User ID \"{$user->getId()}\")");
-Comm::redirect(Router::generate("auth-recovery-request-complete"));
+Router->redirect(Router->generate("auth-recovery-request-complete"));

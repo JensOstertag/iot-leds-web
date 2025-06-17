@@ -2,12 +2,12 @@
     <p class="mb-2">
         {{ t("Already have an account?") }}
         <a class="text-primary hover:text-primary-effect cursor-pointer transition-all"
-           href="{{ Router::generate("auth-login") }}">
+           href="{{ Router->generate("auth-login") }}">
             {{ t("Click here to log in.") }}
         </a>
     </p>
 
-    <form method="post" action="{{ Router::generate("auth-register-action") }}">
+    <form method="post" action="{{ Router->generate("auth-register-action") }}">
         <div class="{{ TailwindUtil::inputGroup() }} mb-2">
             <label class="{{ TailwindUtil::$inputLabel }}"
                    for="email"
@@ -107,7 +107,7 @@
     </p>
 
     <script type="module">
-        import * as PasswordStrength from "{{ Router::staticFilePath("js/auth/PasswordStrength.js") }}";
+        import * as PasswordStrength from "{{ Router->staticFilePath("js/auth/PasswordStrength.js") }}";
         PasswordStrength.init("password");
     </script>
 @endcomponent

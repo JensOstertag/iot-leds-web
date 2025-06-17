@@ -7,14 +7,14 @@
     </h1>
 
     <a id="create-user"
-       href="{{ Router::generate("user-create") }}"
+       href="{{ Router->generate("user-create") }}"
        class="{{ TailwindUtil::button() }} gap-2">
         @include("components.icons.plus")
         {{ t("Create user") }}
     </a>
 
     <div class="overflow-x-auto">
-        <table id="users-table" class="stripe" data-table-ajax="{{ Router::generate("user-overview-table") }}">
+        <table id="users-table" class="stripe" data-table-ajax="{{ Router->generate("user-overview-table") }}">
             <thead>
                 <tr>
                     <th>{{ t("Username") }}</th>
@@ -30,7 +30,7 @@
     </div>
 
     <script type="module">
-        import * as UsersOverview from "{{ Router::staticFilePath("js/users/overview.js") }}";
+        import * as UsersOverview from "{{ Router->staticFilePath("js/users/overview.js") }}";
         UsersOverview.init({
             "Search...": "{{ t("Search...") }}",
             "Loading...": "{{ t("Loading...") }}",

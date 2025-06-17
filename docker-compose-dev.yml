@@ -14,9 +14,9 @@ services:
         environment:
             TZ: "UTC"
             MYSQL_ROOT_PASSWORD: "root"
-            MYSQL_DATABASE: "framework-app"
-            MYSQL_USER: "framework-app"
-            MYSQL_PASSWORD: "framework-app"
+            MYSQL_DATABASE: "iot-leds-web"
+            MYSQL_USER: "iot-leds-web"
+            MYSQL_PASSWORD: "iot-leds-web"
         volumes:
             - "database:/var/lib/mysql"
         ports:
@@ -32,7 +32,7 @@ services:
         environment:
             TZ: "UTC"
         volumes:
-            - "./framework:/app/framework"
+            - "./struktal:/app/struktal"
             - "./public:/app/public"
             - "./src:/app/src"
             - "./config:/app/config"

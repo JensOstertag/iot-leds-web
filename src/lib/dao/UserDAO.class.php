@@ -1,6 +1,6 @@
 <?php
 
-class UserDAO extends GenericUserDAO {
+class UserDAO extends \struktal\ORM\GenericUserDAO {
     public function customRegister(string $username, string $password, string $email, int $permissionLevel, string $oneTimePassword): User {
         $user = new User();
         $user->generateApiKeyPair();

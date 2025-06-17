@@ -1,6 +1,6 @@
 <?php
 
-class User extends GenericUser {
+class User extends \struktal\ORM\GenericUser {
     public ?string $personalUid = null;
     public ?string $personalApiKey = null;
 

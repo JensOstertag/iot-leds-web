@@ -3,7 +3,7 @@
         {{ t("Please enter your account's verified email address below. You will then receive an email with instructions about how to recover your password.") }}
     </p>
 
-    <form method="post" action="{{ Router::generate("auth-recovery-request-action") }}">
+    <form method="post" action="{{ Router->generate("auth-recovery-request-action") }}">
         <div class="{{ TailwindUtil::inputGroup() }} mb-2">
             <label class="{{ TailwindUtil::$inputLabel }}"
                    for="email"
@@ -24,7 +24,7 @@
         </button>
 
         <a class="text-sm text-gray hover:text-gray-effect cursor-pointer transition-all"
-           href="{{ Router::generate("auth-login") }}">
+           href="{{ Router->generate("auth-login") }}">
             {{ t("Log in instead?") }}
         </a>
     </form>

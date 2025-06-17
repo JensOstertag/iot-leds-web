@@ -9,7 +9,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         @include("dashboard.components.link", [
             "icon" => "components.icons.accountsettings",
-            "href" => Router::generate("account-settings"),
+            "href" => Router->generate("account-settings"),
             "title" => t("Account settings"),
             "description" => t("Manage your personal information, security settings, and account preferences.")
         ])
@@ -22,7 +22,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         @include("dashboard.components.link", [
             "icon" => "components.icons.remote",
-            "href" => Router::generate("control-overview"),
+            "href" => Router->generate("control-overview"),
             "title" => t("Control panel"),
             "description" => t("Switch the animations for your devices.")
         ])
@@ -35,14 +35,14 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         @include("dashboard.components.link", [
             "icon" => "components.icons.animation",
-            "href" => Router::generate("animation-overview"),
+            "href" => Router->generate("animation-overview"),
             "title" => t("Animations"),
             "description" => t("Create or edit your own custom animations.")
         ])
 
         @include("dashboard.components.link", [
             "icon" => "components.icons.device",
-            "href" => Router::generate("device-overview"),
+            "href" => Router->generate("device-overview"),
             "title" => t("Devices"),
             "description" => t("Register new devices which should be animated.")
         ])
@@ -56,14 +56,14 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             @include("dashboard.components.link", [
                 "icon" => "components.icons.user",
-                "href" => Router::generate("user-overview"),
+                "href" => Router->generate("user-overview"),
                 "title" => t("User management"),
                 "description" => t("Manage user accounts.")
             ])
 
             @include("dashboard.components.link", [
                 "icon" => "components.icons.gear",
-                "href" => Router::generate("system-settings"),
+                "href" => Router->generate("system-settings"),
                 "title" => t("System settings"),
                 "description" => t("Configure the system to your needs.")
             ])
