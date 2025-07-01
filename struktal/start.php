@@ -59,6 +59,10 @@ if(Config::$DB_SETTINGS["DB_USE"]) {
     );
 }
 
+use struktal\Auth\Auth;
+const Auth = new Auth();
+Auth->setUserObjectName(User::class);
+
 // Override BladeOne's include directive to use components with isolated variables
 Blade->directive("include", function($expression) {
     $code = Blade->phpTag . " Blade->startComponent($expression); ?>";

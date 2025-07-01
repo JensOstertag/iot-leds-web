@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b4050fc6c11b71c8a50c2ea8afb9b77f",
+    "content-hash": "99ac786d20c4a356ad920e7bec156a8f",
     "packages": [
         {
             "name": "eftec/bladeone",
@@ -145,6 +145,47 @@
                 }
             ],
             "time": "2024-11-24T18:04:13+00:00"
+        },
+        {
+            "name": "struktal/struktal-auth",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Struktal/struktal-auth.git",
+                "reference": "44a00277b47a8e0b0e9a4bc27fd2e5fae77ad22b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Struktal/struktal-auth/zipball/44a00277b47a8e0b0e9a4bc27fd2e5fae77ad22b",
+                "reference": "44a00277b47a8e0b0e9a4bc27fd2e5fae77ad22b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2.0",
+                "struktal/struktal-orm": "~1.0.1",
+                "struktal/struktal-router": "~1.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "struktal\\ORM\\": "src/orm/",
+                    "struktal\\Auth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP library for user authentication in Struktal applications",
+            "keywords": [
+                "Authentication",
+                "strukal"
+            ],
+            "support": {
+                "issues": "https://github.com/Struktal/struktal-auth/issues",
+                "source": "https://github.com/Struktal/struktal-auth/tree/2.0.0"
+            },
+            "time": "2025-06-30T21:47:38+00:00"
         },
         {
             "name": "struktal/struktal-csv-reader",

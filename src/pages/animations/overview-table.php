@@ -1,6 +1,6 @@
 <?php
 
-$user = Auth::enforceLogin(PermissionLevel::DEFAULT->value, Router->generate("index"));
+$user = Auth->enforceLogin(PermissionLevel::DEFAULT->value, Router->generate("index"));
 
 $animations = Animation::dao()->getObjects([
     "userId" => $user->getId()

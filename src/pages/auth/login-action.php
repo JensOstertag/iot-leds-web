@@ -1,7 +1,7 @@
 <?php
 
 // Check whether the user is already logged in
-if(Auth::isLoggedIn()) {
+if(Auth->isLoggedIn()) {
     Router->redirect(Router->generate("index"));
 }
 
@@ -33,8 +33,8 @@ try {
 
 $user = User::dao()->login($post["username"], false, $post["password"]);
 
-if(!$user instanceof User) {
-    if($user === 2) {
+if($user instanceof \struktal\Auth\LoginError) {
+    if($user === \struktal\Auth\LoginError::EMAIL_NOT_VERIFIED) {
         $message = t("Before logging in, please verify your account's email address.");
     } else {
         $message = t("An account with these credentials could not be found. Please check for spelling errors and try again.");
@@ -51,5 +51,5 @@ $user->setOneTimePasswordExpiration(null);
 User::dao()->save($user);
 
 Logger::getLogger("Login")->info("User \"{$post["username"]}\" has logged in (User ID {$user->getId()})");
-Auth::login($user);
+Auth->login($user);
 Router->redirect(Router->generate("index"));

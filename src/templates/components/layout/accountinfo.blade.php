@@ -10,7 +10,7 @@
 
             <div class="flex flex-col break-all">
                 <span class="text-gray text-sm">{{ t("Logged in as") }}</span>
-                {{ Auth::getLoggedInUser()?->getUsername() }}
+                {{ Auth->getLoggedInUser()?->getUsername() }}
             </div>
         </div>
 
